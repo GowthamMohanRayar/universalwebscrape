@@ -25,13 +25,13 @@ public class InitiateScrapeService {
 	public List<UrlFromCSVDto> initiateScrape(InitiateScrapeDto scrapeDto) {
 
 		try {
-			scrapeUtils.doScrapeIfListIsNull(urlFromCSVDtos, scrapeDto);
+			urlFromCSVDtos = scrapeUtils.doScrapeIfListIsNull(urlFromCSVDtos, scrapeDto);
 
 			// Extract stocks based on custom rule
 			urlFromCSVDtos.stream().filter(InitiateScrapeConstants.CLEAN_DATA_CHECK)
 					.filter(InitiateScrapeConstants.INTEREST_VALUE_FILTER).forEach(System.out::println);
 
-			//print range of the components for all stocks if file
+			// print range of the components for all stocks if file
 			rangeMapUtils.printRangeMap(urlFromCSVDtos);
 		} catch (Exception e) {
 			e.printStackTrace();

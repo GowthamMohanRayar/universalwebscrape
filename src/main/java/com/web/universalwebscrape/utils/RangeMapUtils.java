@@ -20,18 +20,19 @@ public class RangeMapUtils {
 		RangeDto beta = new RangeDto();
 		RangeDto ttm_pe = new RangeDto();
 		Map<String, RangeDto> rangeMap = new HashMap<>();
+
+		urlFromCSVDtos.stream().filter(InitiateScrapeConstants.CLEAN_DATA_CHECK).forEach(dto -> {
+			ttm_eps.rageCheck(dto.getIpoName(), dto.getDataMap().get("ttm eps"));
+			pbRatio.rageCheck(dto.getIpoName(), dto.getDataMap().get("p/b"));
+			cmp.rageCheck(dto.getIpoName(), dto.getDataMap().get("cmp"));
+			beta.rageCheck(dto.getIpoName(), dto.getDataMap().get("beta"));
+			ttm_pe.rageCheck(dto.getIpoName(), dto.getDataMap().get("ttm pe"));
+		});
 		rangeMap.put("ttm_eps", ttm_eps);
 		rangeMap.put("pbRatio", pbRatio);
 		rangeMap.put("cmp", cmp);
 		rangeMap.put("beta", beta);
 		rangeMap.put("ttm_pe", ttm_pe);
-		urlFromCSVDtos.stream().filter(InitiateScrapeConstants.CLEAN_DATA_CHECK).forEach(dto -> {
-			ttm_eps.rageCheck(dto.getDataMap().get("ttm eps"));
-			pbRatio.rageCheck(dto.getDataMap().get("p/b"));
-			cmp.rageCheck(dto.getDataMap().get("cmp"));
-			beta.rageCheck(dto.getDataMap().get("beta"));
-			ttm_pe.rageCheck(dto.getDataMap().get("ttm pe"));
-		});
 		System.out.println(rangeMap);
 	}
 

@@ -3,10 +3,10 @@ package com.web.universalwebscrape.dto;
 import com.web.universalwebscrape.constants.InitiateScrapeConstants;
 
 public class RangeDto {
-	private double lowerLimit;
-	private double upperLimit;
+	private double lowerLimit = Double.MAX_VALUE;
+	private double upperLimit = Double.MIN_VALUE;
 
-	public void rageCheck(Object valueAsString) {
+	public void rageCheck(String ipoName, Object valueAsString) {
 		double value = InitiateScrapeConstants.STRING_TO_DOUBLE.applyAsDouble(valueAsString);
 		if (value < lowerLimit) {
 			lowerLimit = value;
@@ -14,6 +14,7 @@ public class RangeDto {
 		if (value > upperLimit) {
 			upperLimit = value;
 		}
+
 	}
 
 	public Double getLowerLimit() {

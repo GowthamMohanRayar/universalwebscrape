@@ -17,7 +17,7 @@ import com.web.universalwebscrape.dto.UrlFromCSVDto;
 @Component
 public class ScrapeUtils {
 
-	public void doScrapeIfListIsNull(List<UrlFromCSVDto> urlFromCSVDtos, InitiateScrapeDto scrapeDto)
+	public List<UrlFromCSVDto> doScrapeIfListIsNull(List<UrlFromCSVDto> urlFromCSVDtos, InitiateScrapeDto scrapeDto)
 			throws IOException {
 		if (null == urlFromCSVDtos) {
 			urlFromCSVDtos = Files.lines(Paths.get(scrapeDto.getFileName()))
@@ -33,5 +33,6 @@ public class ScrapeUtils {
 						return urlFromCSVDto;
 					}).collect(Collectors.toList());
 		}
+		return urlFromCSVDtos;
 	}
 }

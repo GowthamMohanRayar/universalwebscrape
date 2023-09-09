@@ -27,6 +27,10 @@ curl -i -X POST \
 	"p/b" : { 
         "elementType" : "text",
         "tag" : "div#stk_overview,div.nsestock_overview,div.mob-hide,div.oview_table,span.nsepb"
+    },
+	"cmp" : { 
+        "elementType" : "text",
+        "tag" : "div#nsecp"
     }
   }
 }' \
