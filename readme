@@ -1,0 +1,44 @@
+curl -i -X POST \
+   -H "Content-Type:application/json" \
+   -d \
+'{
+  "fileName":"C:\\Users\\gowth\\OneDrive\\Documents\\GitHub\\universalwebscrape\\src\\main\\resources\\ONE NSE - Money Control.csv",
+  "tagMapper" : {
+    "StockName" : { 
+        "elementType" : "text",
+        "tag" : "div#mc_mainWrapper,div.name_left,div#stockName,h1"
+    },
+    "insider" : { 
+        "elementType" : "array",
+        "tag" : "div#insider,div.clearfix,div.deals,div.clearfix,div.clearfix,div.bd_bx"
+    },
+    "beta" : { 
+        "elementType" : "array",
+        "tag" : "div#stk_overview,div.nsestock_overview,div.mob-hide,div.oview_table,table,tbody,tr"
+    },
+	"ttm pe" : { 
+        "elementType" : "text",
+        "tag" : "div#stk_overview,div.nsestock_overview,div.mob-hide,div.oview_table,span.nsepe"
+    },
+	"ttm eps" : { 
+        "elementType" : "text",
+        "tag" : "div#stk_overview,div.nsestock_overview,div.mob-hide,div.oview_table,span.nseceps"
+    },
+	"p/b" : { 
+        "elementType" : "text",
+        "tag" : "div#stk_overview,div.nsestock_overview,div.mob-hide,div.oview_table,span.nsepb"
+    }
+  }
+}' \
+ 'http://localhost:8080/initiate/scrape'
+ 
+ 
+ ABOVE CURL IS TO INITIATE THE SCRAPE PROCESS AND POPULATE THE LIST AND APPLY RULE
+ 
+ LEGENDS :
+ 
+ "StockName" : 														---> KEY COMPONENT 
+ 	{ 
+        "elementType" : "text",										---> COMPONENT TYPE
+        "tag" : "div#mc_mainWrapper,div.name_left,div#stockName,h1" ---> TAGS TO EXTRACT FROM HTML PAGE
+    }
